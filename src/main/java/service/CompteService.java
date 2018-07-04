@@ -6,6 +6,7 @@ import domaine.Compte;
 
 public class CompteService extends CrudService<Compte> {
 	
+
 	private CompteRepository getRepo(){
 		return (CompteRepository) this.repo;
 	}
@@ -13,4 +14,5 @@ public class CompteService extends CrudService<Compte> {
 	public void deleteAllByClient(Client client){
 		this.getRepo().deleteAllByClient(client);
 	}
+
 }

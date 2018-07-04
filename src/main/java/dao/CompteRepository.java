@@ -11,7 +11,9 @@ import domaine.Compte;
 @Repository
 public interface CompteRepository extends JpaRepository<Compte, Integer> {
 	
+
 	@Transactional
 	public void deleteAllByClient(Client client);
 	
+
 }
