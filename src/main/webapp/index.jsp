@@ -4,4 +4,5 @@
 <!DOCTYPE html>
 <html>
 	<c:redirect url="/listeClients.html"/>
+
 </html>
