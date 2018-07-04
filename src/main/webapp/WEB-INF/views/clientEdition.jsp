@@ -24,33 +24,31 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients.html?idConseille=" var="listeClientsUrl" />
-	<c:url value="/listeComptes.html?idClient=" var="listeComptesUrl" />
-	<c:url value="/virements.html" var="virementsUrl" />
-	<c:url value="/clientEdition.html?idClient=" var="clientEditionUrl" />
-	<c:url value="/logout.html" var="logoutUrl" />
+	<c:url value="/Acceuil" var="listeClientsUrl" />
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
 			<div class="navbar-brand">
-				<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}"
-					class="col-sm-3"> <img name="logo"
+				<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">
+					<img name="logo"
 					src="${pageContext.request.contextPath}/images/logo-banque.jpg"
-					alt="LOGO"></a>
+					alt="LOGO">
+				</a>
 
 			</div>
 		</div>
 		<div class="col-md-6 d-flex justify-content-center align-items-center">
 			<h1>
-				<font color="white">ProxiBanque Conseiller Clientèle</font>
+				<font color="white">ProxiBanque -Conseiller clientèle-</font>
 			</h1>
 		</div>
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
 			<h4>
 
-				<font color="green" style="font-variant: small-caps;"><b>${sessionScope.csl.prenom} ${sessionScope.csl.nom}</b></font>
+				<font color="green" style="font-variant: small-caps;"><b>Jérémy
+						MASSON</b></font>
 			</h4>
 			<h5>
 				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>
@@ -59,22 +57,22 @@
 		<!--  Logo déconnection -->
 		<div class="col-md-2">
 			<div class="navbar-brand">
-				<a href="${logoutUrl}"><img name="logo"
+				<img name="logo"
 					src="${pageContext.request.contextPath}/images/Logout.png"
-					alt="Logout"></a>
+					alt="Logout">
 			</div>
 		</div>
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}"
+		<a id="ListeClientColor" href="${listeClientsUrl}"
 			class="col-sm-3">Liste des Clients</a>
 	</nav>
 
 	<!-- LISTING DES CLIENTS -->
 	<div class="container-fluid">
 		<h4>
-			<b>Edition du client : ${client.prenom} ${client.nom}</b>
+			<b>Edition du client : ${modelClient.prenom} ${modelClient.nom}</b>
 		</h4>
 		<table id="liste" class="listeClient">
 			<thead style="font-variant: small-caps;">

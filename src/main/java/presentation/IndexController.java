@@ -35,6 +35,19 @@ public class IndexController {
 	@Autowired
 	CompteService compteService;
 
+	@GetMapping("/Acceuil/Edition")
+	public ModelAndView editClient (@RequestParam Integer idClient) {
+		ModelAndView mav = new ModelAndView("clientEdition");
+		mav.addObject("modelClient", this.clientService.getById(idClient));
+		return mav;
+	}
+	
+	@PostMapping("/Acceuil/Edition")
+	public String validateClient(@ModelAttribute Client modelClient) {
+		this.clientService.update(modelClient);
+		return "redirect:/Acceuil.html";
+	}
+	
 	
 	@RequestMapping("/listeClients")
 	public ModelAndView index(){
