@@ -2,15 +2,19 @@ package presentation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domaine.Client;
 import service.ClientService;
 import service.CompteCourantService;
 import service.CompteEpargneService;
+import service.CompteService;
 import service.ConseilleService;
 
 @Controller
@@ -24,9 +28,12 @@ public class IndexController {
 	
 	@Autowired
 	CompteCourantService compteCourantService;
-	
+
 	@Autowired
 	CompteEpargneService compteEpargneService;
+	
+	@Autowired
+	CompteService compteService;
 
 	
 	@RequestMapping("/listeClients")
@@ -40,6 +47,14 @@ public class IndexController {
 	@PostMapping("/listeClients")
 	public String createClient(@ModelAttribute Client client){
 		this.clientService.create(client);
+		return "redirect:/listeClients.html";
+	}
+	
+	@GetMapping("/deleteClient")
+	public String deleteClient(@RequestParam Integer idDeleted){
+		Client client = this.clientService.getById(idDeleted);
+		this.compteService.deleteAllByClient(client);
+		this.clientService.deleteById(idDeleted);
 		return "redirect:/listeClients.html";
 	}
 

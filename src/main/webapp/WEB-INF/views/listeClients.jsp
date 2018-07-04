@@ -23,7 +23,6 @@
 	<c:url value="/listeComptes.html?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements.html?idClient=" var="virementsUrl" />
 	<c:url value="/clientEdition.html?idClient=" var="clientEditionUrl" />
-	<c:url value="/logout.html" var="logoutUrl" />
 	<c:url value="/deleteClient.html?idDeleted=" var="deleteUrl" />
 
 	<!-- Entête avec Logo -->
@@ -83,20 +82,12 @@
 						<td>${client.prenom}</td>
 						<td>${client.mail}</td>
 						<td>${client.adresse}</td>
-						<td><a href="${clientEditionUrl}${client.id}"><button>
-									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
-								</button></a></td>
-						<td><a href="${listeComptesUrl}${client.id}"><button>
-									<h7> <font style="font-variant: small-caps;">Liste des comptes</font></h7>
-								</button></a></td>
+						<td><a href="${clientEditionUrl}${client.id}" class="btn btn-warning">Edition</a></td>
+						
+						<td><a href="${listeComptesUrl}${client.id}" class="btn btn-info">Liste des comptes</a></td>
 
-						<td><a href="${virementsUrl}${client.id}"><button>
-									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
-								</button></a></td>
-						<td><a href="${deleteUrl}${client.id}"><button>
-									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
-								</button>
-						</a></td>
+						<td><a href="${virementsUrl}${client.id}" class="btn btn-primary">Virements</a></td>
+						<td><a href="${deleteUrl}${client.id}" class="btn btn-danger">Suppression</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -124,7 +115,7 @@
 						path="adresse" id="adresseNouveauClient" required="required" />
 				</div>
 				<div class="col">
-					<button type="submit" class="btn btn-primary">Créer</button>
+					<button type="submit" class="btn btn-success">Créer</button>
 				</div>
 			</div>
 		</form:form>

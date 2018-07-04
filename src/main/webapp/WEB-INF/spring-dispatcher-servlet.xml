@@ -20,10 +20,9 @@
 
 	<bean id="clientService" class="service.ClientService" />
 	<bean id="conseilleService" class="service.ConseilleService" />
-	<bean id="compteCourantService"
-		class="service.CompteCourantService" />
-	<bean id="compteEpargneService"
-		class="service.CompteEpargneService" />
+	<bean id="compteService" class="service.CompteService" />
+	<bean id="compteCourantService"	class="service.CompteCourantService" />
+	<bean id="compteEpargneService"	class="service.CompteEpargneService" />
 
 
 	<bean id="viewResolver"
