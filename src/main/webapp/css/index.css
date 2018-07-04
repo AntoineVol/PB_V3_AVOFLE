@@ -16,9 +16,9 @@ div.Connexion{
 }
 
 /* PARAMETRE UserName TopRight */
-button.btn{
+/* button.btn{
 	background-color: #1966B2;
-}
+} */
 
  /* PARAMETRE Table Centrale */
 div[name='tabCentrale']{

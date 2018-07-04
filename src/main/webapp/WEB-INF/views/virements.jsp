@@ -9,11 +9,17 @@
 <meta charset="UTF-8">
 <%-- <%=request.getContextPath()%> --%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css_bootstrap/4.1.1_css/bootstrap.min.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css_bootstrap/3.3.7_css/bootstrap.min.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" />
-<script src="${pageContext.request.contextPath}/js_jquery_3.3.1/jquery-3.3.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js_bootstrap_3.3.7/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css_bootstrap/4.1.1_css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css_bootstrap/3.3.7_css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/index.css" />
+<script
+	src="${pageContext.request.contextPath}/js_jquery_3.3.1/jquery-3.3.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js_bootstrap_3.3.7/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/virement.js"></script>
 
 <title>ProxiBanque</title>
 </head>
@@ -24,7 +30,7 @@
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<a class="navbar-brand" href="${listeClientsUrl}"> <img
 				name="logo"
 				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
@@ -33,36 +39,38 @@
 		</div>
 		<div class="col-md-6 d-flex justify-content-center align-items-center">
 			<h1>
-				<font color="white">ProxiBanque Conseiller Clientèle</font>
+				<font color="white">Effectuer un virement</font>
 			</h1>
 		</div>
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
 			<h4>
-				<font color="green" style="font-variant: small-caps;"><b>Jérémy MASSON</b></font>
+				<font color="green" style="font-variant: small-caps;"><b>Jérémy
+						MASSON</b></font>
 			</h4>
 			<h5>
 				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>
 			</h5>
 		</div>
 		<!--  Logo déconnection -->
-		<div class="col-md-2">
+		<div class="col-md-1">
 			<div class="navbar-brand">
-				<img name="logo" src="${pageContext.request.contextPath}/images/Logout.png"
+				<img name="logo"
+					src="${pageContext.request.contextPath}/images/Logout.png"
 					alt="Logout">
 			</div>
 		</div>
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a href="${listeClientsUrl}" class="col-sm-3">Liste des
-			Clients</a>
+		<a href="${listeClientsUrl}" class="col-sm-3 d-flex justify-content-center align-items-center">Liste des Clients</a>
 	</nav>
 
 	<%-- LISTE DES COMPTES D'UN CLIENTS --%>
 	<div class="container-fluid">
 		<h4>
-			<b>Liste des comptes du client ${client.id} ${client.prenom} ${client.nom}</b>
+			<b>Liste des comptes du client : #${client.id} ${client.prenom}
+				${client.nom}</b>
 		</h4>
 
 		<div class="raw">
@@ -75,7 +83,8 @@
 				</thead>
 				<tbody>
 					<c:forEach var="CompteCourant" items="${listCompteCourant}">
-						<tr>
+					<c:if test="${CompteCourant.solde<0}"><tr class="table-danger"></c:if>
+					<c:if test="${CompteCourant.solde>=0}"><tr></c:if>
 							<td>${CompteCourant.id}</td>
 							<td>${CompteCourant.solde}</td>
 							<td>${CompteCourant.decouvert}</td>
@@ -94,7 +103,8 @@
 				</thead>
 				<tbody>
 					<c:forEach var="CompteEpargne" items="${listCompteEpargne}">
-						<tr>
+					<c:if test="${CompteEpargne.solde<0}"><tr class="table-danger"></c:if>
+					<c:if test="${CompteEpargne.solde>=0}"><tr></c:if>
 							<td>${CompteEpargne.id}</td>
 							<td>${CompteEpargne.solde}</td>
 							<td>${CompteEpargne.taux}</td>
@@ -105,25 +115,34 @@
 
 			<!-- VIREMENTS -->
 			<div class="container-fluid">
-				<form method="post" onsubmit="return checkAmount(this)">
+				<form method="post" name="formVirement"
+					onsubmit="return checkAmount(this)">
 					<legend>Effectuer un nouveau virement</legend>
 					<div class="form-row align-items-center">
 
 						<div class="form-group">
 							<label for="debiter">Compte à debiter</label> <select
-								class="form-control" name="compteDebiter" id="compteDebiter" required>
-								<c:forEach var="compte" items="${listCompte}">
-									<option value="${compte.id}##${compte.solde}##${compte.decouvert}">Id
+								class="form-control" name="compteDebiter" id="compteDebiter"
+								required>
+								<c:forEach var="compte" items="${listCompteCourant}">
+									<option
+										value="${compte.id}##${compte.solde}##${compte.decouvert}">Id
+										: ${compte.id} - Solde : ${compte.solde}</option>
+								</c:forEach>
+								<c:forEach var="compte" items="${listCompteEpargne}">
+									<option
+										value="${compte.id}##${compte.solde}##0">Id
 										: ${compte.id} - Solde : ${compte.solde}</option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="form-group col">
-							<label for="crediter">Compte à debiter</label> <select
-								class="form-control" name="compteCrediter" id="compteCrediter" required>
+							<label for="crediter">Compte à crediter</label> <select
+								class="form-control" name="compteCrediter" id="compteCrediter"
+								required>
 								<c:forEach var="compte" items="${listCompte}">
-									<option value="${compte.id}##${compte.solde}##${compte.decouvert}">Id
-										: ${compte.id} - Solde : ${compte.solde}</option>
+									<option value="${compte.id}##${compte.solde}">Id :
+										${compte.id} - Solde : ${compte.solde}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -133,18 +152,13 @@
 								id="montant" min="0" required>
 						</div>
 						<div class="form-group col">
-							<button type="submit" class="btn btn-primary">Effectuer
+							<button type="submit" class="btn btn-success">Effectuer
 								le virement</button>
 						</div>
 						<div class="form-group col">
 							<input type="hidden" class="form-control"
 								value=${idClient
 						} name="idClient" id="idClient" />
-						</div>
-						<div class="form-group col">
-							<input type="hidden" class="form-control"
-								value=${idCsl
-						} name="idCsl" id="idCsl" />
 						</div>
 					</div>
 				</form>

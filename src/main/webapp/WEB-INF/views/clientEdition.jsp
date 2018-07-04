@@ -24,11 +24,11 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/Acceuil" var="listeClientsUrl" />
+	<c:url value="/listeClients.html" var="listeClientsUrl" />
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<div class="navbar-brand">
 				<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">
 					<img name="logo"
@@ -40,7 +40,7 @@
 		</div>
 		<div class="col-md-6 d-flex justify-content-center align-items-center">
 			<h1>
-				<font color="white">ProxiBanque -Conseiller clientèle-</font>
+				<font color="white">Edition d'un client</font>
 			</h1>
 		</div>
 		<!-- UserName -->
@@ -55,7 +55,7 @@
 			</h5>
 		</div>
 		<!--  Logo déconnection -->
-		<div class="col-md-2">
+		<div class="col-md-1">
 			<div class="navbar-brand">
 				<img name="logo"
 					src="${pageContext.request.contextPath}/images/Logout.png"
@@ -66,7 +66,7 @@
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
 		<a id="ListeClientColor" href="${listeClientsUrl}"
-			class="col-sm-3">Liste des Clients</a>
+			class="col-sm-3 d-flex justify-content-center align-items-center">Liste des Clients</a>
 	</nav>
 
 	<!-- LISTING DES CLIENTS -->

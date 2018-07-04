@@ -19,7 +19,7 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients.html?idConseille=" var="listeClientsUrl" />
+	<c:url value="/listeClients.html?" var="listeClientsUrl" />
 	<c:url value="/listeComptes.html?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements.html?idClient=" var="virementsUrl" />
 	<c:url value="/clientEdition.html?idClient=" var="clientEditionUrl" />
@@ -27,7 +27,7 @@
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<div class="navbar-brand">
 				<img name="logo"
 					src="${pageContext.request.contextPath}/images/logo-banque.jpg"
@@ -41,18 +41,29 @@
 		</div>
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
-
+			<h4>
+				<font color="green" style="font-variant: small-caps;"><b>Jérémy
+						MASSON</b></font>
+			</h4>
+			<h5>
+				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>
+			</h5>
 		</div>
 		<!--  Logo déconnection -->
-		<div class="col-md-2">
-			
+		<div class="col-md-1">
+			<div class="navbar-brand">
+				<img name="logo"
+					src="${pageContext.request.contextPath}/images/Logout.png"
+					alt="Logout">
+			</div>
 		</div>
+	</nav>
 	</nav>
 
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
 		<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}"
-			class="col-sm-3">Liste des Clients</a>
+			class="col-sm-3 d-flex justify-content-center align-items-center">Liste des Clients</a>
 	</nav>
 
 	<!-- LISTING DES CLIENTS -->

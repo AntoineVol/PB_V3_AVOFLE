@@ -5,11 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-<<<<<<< Updated upstream
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-=======
->>>>>>> Stashed changes
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -64,14 +59,14 @@ public class IndexController {
 		return "redirect:/listeClients.html";
 	}
 
-	@GetMapping("clientEdition")
+	@GetMapping("/clientEdition")
 	public ModelAndView editClient (@RequestParam Integer idClient) {
 		ModelAndView mav = new ModelAndView("clientEdition");
 		mav.addObject("modelClient", this.clientService.getById(idClient));
 		return mav;
 	}
 	
-	@PostMapping("clientEdition")
+	@PostMapping("/clientEdition")
 	public String validateClient(@ModelAttribute Client modelClient) {
 		this.clientService.update(modelClient);
 		return "redirect:/listeClients.html";
@@ -84,10 +79,11 @@ public class IndexController {
 		mav.addObject("client", client);
 		mav.addObject("listCompteCourant", this.compteCourantService.getAllByClient(client));
 		mav.addObject("listCompteEpargne", this.compteEpargneService.getAllByClient(client));
+		mav.addObject("listCompte", this.compteService.getAllByClient(client));
 		return mav;
 	}
 	@PostMapping("/virements")
-	public String validerVirement(@RequestParam String compteDebiter, @RequestParam String compteCrediter, @RequestParam Double montant) {
+	public String validerVirement(@RequestParam String compteDebiter, @RequestParam String compteCrediter, @RequestParam Double montant, @RequestParam Integer idClient) {
 		String[] debit = compteDebiter.split("##");
 		String[] credit = compteCrediter.split("##");
 		Compte compteDebite = this.compteService.getById(Integer.parseInt(debit[0]));
@@ -96,7 +92,7 @@ public class IndexController {
 		compteCredite.setSolde(compteCredite.getSolde()+montant);
 		this.compteService.update(compteDebite);
 		this.compteService.update(compteCredite);
-		return "redirect:/virements.html";
+		return "redirect:/virements.html?idClient="+idClient;
 	}
 
 }
