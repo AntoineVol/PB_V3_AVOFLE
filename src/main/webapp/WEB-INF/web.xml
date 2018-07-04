@@ -14,25 +14,6 @@
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
-	
-	<!-- Filtre d'URL -->
-	<filter>
-		<filter-name>FiltreAuthentification</filter-name>
-		<filter-class>presentation.AuthFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>FiltreAuthentification</filter-name>
-		<url-pattern>/listeClients</url-pattern>
-		<url-pattern>/listeComptes</url-pattern>
-		<url-pattern>/virements</url-pattern>
-		<url-pattern>/clientEdition</url-pattern>
-		<url-pattern>/logout</url-pattern>
-		<url-pattern>/deleteClient</url-pattern>
-	</filter-mapping>
-	
-
-
-
 	<!-- Documentation pour les pages d'erreurs : https://docs.oracle.com/cd/E19316-01/819-3669/bnahi/index.html -->
 	<error-page>
 		<error-code>404</error-code>

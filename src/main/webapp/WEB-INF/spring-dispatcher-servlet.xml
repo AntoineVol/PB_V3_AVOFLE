@@ -17,7 +17,6 @@
 
 	<context:component-scan
 		base-package="service, presentation" />
-	<jpa:repositories base-package="dao" />
 
 	<bean id="clientService" class="service.ClientService" />
 	<bean id="conseilleService" class="service.ConseilleService" />
@@ -45,4 +44,5 @@
 			ref="entityManagerFactory" />
 	</bean>
 
+	<jpa:repositories base-package="dao" />
 </beans>

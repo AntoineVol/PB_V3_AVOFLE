@@ -56,11 +56,11 @@ public class Client extends Personne {
 		this.conseille = conseille;
 	}
 
-//	public List<Compte> getListCompte() {
-//		return listCompte;
-//	}
-//	public void setListCompte(List<Compte> listCompte) {
-//		this.listCompte = listCompte;
-//	}
+	public List<Compte> getListCompte() {
+		return listCompte;
+	}
+	public void setListCompte(List<Compte> listCompte) {
+		this.listCompte = listCompte;
+	}
 
 }

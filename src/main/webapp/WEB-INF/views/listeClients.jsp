@@ -9,16 +9,11 @@
 <meta charset="UTF-8">
 <%-- <%=request.getContextPath()%> --%>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css_bootstrap/4.1.1_css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css_bootstrap/3.3.7_css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/index.css" />
-<script
-	src="${pageContext.request.contextPath}/js_jquery_3.3.1/jquery-3.3.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js_bootstrap_3.3.7/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css_bootstrap/4.1.1_css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css_bootstrap/3.3.7_css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" />
+<script	src="${pageContext.request.contextPath}/js_jquery_3.3.1/jquery-3.3.1.min.js"></script>
+<script	src="${pageContext.request.contextPath}/js_bootstrap_3.3.7/bootstrap.min.js"></script>
 
 <title>ProxiBanque</title>
 </head>
@@ -42,27 +37,16 @@
 		</div>
 		<div class="col-md-6 d-flex justify-content-center align-items-center">
 			<h1>
-				<font color="white">ProxiBanque Conseiller clientèle</font>
+				<font color="white">Accueil</font>
 			</h1>
 		</div>
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
-			<h4>
 
-				<font color="green" style="font-variant: small-caps;"><b>Bienvenue
-						${sessionScope.csl.prenom} ${sessionScope.csl.nom}</b></font>
-			</h4>
-			<h5>
-				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>
-			</h5>
 		</div>
 		<!--  Logo déconnection -->
 		<div class="col-md-2">
-			<div class="navbar-brand">
-				<a href="${logoutUrl}"><img name="logo"
-					src="${pageContext.request.contextPath}/images/Logout.png"
-					alt="Logout"></a>
-			</div>
+			
 		</div>
 	</nav>
 
@@ -75,7 +59,7 @@
 	<!-- LISTING DES CLIENTS -->
 	<div class="container-fluid">
 		<h4>
-			<b>Présentation de la liste de vos Clients</b>
+			<b>Présentation de la liste des Clients</b>
 		</h4>
 		<table id="liste" class="listeClient">
 			<thead style="font-variant: small-caps;">
@@ -103,20 +87,16 @@
 									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
 								</button></a></td>
 						<td><a href="${listeComptesUrl}${client.id}"><button>
-									<h7> <font style="font-variant: small-caps;">Liste
-										des comptes</font></h7>
+									<h7> <font style="font-variant: small-caps;">Liste des comptes</font></h7>
 								</button></a></td>
 
 						<td><a href="${virementsUrl}${client.id}"><button>
 									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
 								</button></a></td>
-						<td><a
-							href="${deleteUrl}${client.id}">
-								<button>
+						<td><a href="${deleteUrl}${client.id}"><button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button>
 						</a></td>
-
 					</tr>
 				</c:forEach>
 			</tbody>

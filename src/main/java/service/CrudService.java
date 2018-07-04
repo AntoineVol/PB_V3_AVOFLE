@@ -36,6 +36,7 @@ public abstract class CrudService<ENTITY extends Entity> {
 	public List<ENTITY> getAll(){
 		return this.repo.findAll();
 	}
+
 	public void deleteById(Integer id) {
 		this.repo.deleteById(id);
 	}
