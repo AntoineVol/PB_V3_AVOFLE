@@ -14,5 +14,5 @@ import domaine.CompteCourant;
 public interface CompteCourantRepository extends JpaRepository<CompteCourant, Integer> {
 
 	@Transactional
-	public List<CompteCourant> getAllByClient(Client client);
+	List<CompteCourant> getAllByClient(Client client);
 }

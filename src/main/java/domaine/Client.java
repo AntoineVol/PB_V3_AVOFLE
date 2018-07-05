@@ -41,10 +41,12 @@ public class Client extends Personne {
 	}
 
 	// Getters et setters
-
+	
+	@Override
 	public Integer getId() {
 		return id;
 	}
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}

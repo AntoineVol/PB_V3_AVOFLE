@@ -19,6 +19,8 @@ import service.ConseilleService;
 @Controller
 public class IndexController {
 
+	final String redirectListClient = "redirect:/listeClients.html";
+	final String redirectVirement = "redirect:/virements.html?idClient=";
 	@Autowired
 	ClientService clientService;
 
@@ -47,7 +49,7 @@ public class IndexController {
 	@PostMapping("/listeClients")
 	public String createClient(@ModelAttribute Client client){
 		this.clientService.create(client);
-		return "redirect:/listeClients.html";
+		return redirectListClient;
 	}
 	
 
@@ -56,7 +58,7 @@ public class IndexController {
 		Client client = this.clientService.getById(idDeleted);
 		this.compteService.deleteAllByClient(client);
 		this.clientService.deleteById(idDeleted);
-		return "redirect:/listeClients.html";
+		return redirectListClient;
 	}
 
 	@GetMapping("/clientEdition")
@@ -69,7 +71,7 @@ public class IndexController {
 	@PostMapping("/clientEdition")
 	public String validateClient(@ModelAttribute Client modelClient) {
 		this.clientService.update(modelClient);
-		return "redirect:/listeClients.html";
+		return redirectListClient;
 	}
 	
 	@GetMapping("/virements")
@@ -92,7 +94,7 @@ public class IndexController {
 		compteCredite.setSolde(compteCredite.getSolde()+montant);
 		this.compteService.update(compteDebite);
 		this.compteService.update(compteCredite);
-		return "redirect:/virements.html?idClient="+idClient;
+		return redirectVirement+idClient;
 	}
 
 }

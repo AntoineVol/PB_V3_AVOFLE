@@ -23,37 +23,6 @@ public abstract class Personne implements Entity, Serializable {
 
 	private String adresse;
 
-	/**
-	 *  Constructeur par defaut
-	 */
-	public Personne() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 *  Constructeur élaboré
-	 * @param nom Nom de la personne
-	 * @param prenom Prenom de la personne
-	 * @param mail Mail de la personne
-	 * @param adresse Adresse de la personne
-	 */
-	public Personne(String nom, String prenom, String mail, String adresse) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.mail = mail;
-		this.adresse = adresse;
-
-	}
-
-	public Personne(String nom, String prenom) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-
-	}
-
 	
 	public String getNom() {
 		return nom;

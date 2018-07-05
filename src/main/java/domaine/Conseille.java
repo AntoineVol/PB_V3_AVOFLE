@@ -23,28 +23,16 @@ public class Conseille extends Personne {
 	public Conseille() {
 		super();
 	}
-
+	
+	@Override
 	public Integer getId() {
 		return id;
 	}
-
+	
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	/**
-	 * Constructeur élaboré
-	 * @param nom Nom du conseillé
-	 * @param prenom Prenom du conseillé
-	 * @param login Login du conseillé
-	 * @param password Mot de passe du conseillé
-	 */
-	public Conseille(String nom, String prenom, String login, String password) {
-		super( nom,prenom);
-		this.login = login;
-		this.password=password;
-	}
-
 
 	public String getLogin() {
 		return login;
